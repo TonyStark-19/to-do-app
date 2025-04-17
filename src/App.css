@@ -84,6 +84,20 @@
   font-size: 20px;
 }
 
+.task-text-wrap .task-icon,
+.delete-icon {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.completed-icon {
+  color: #a0cbf1;
+}
+
 /* input box */
 
 .task-input-box {
@@ -111,4 +125,66 @@
 
 .task-input-box input::placeholder {
   color: #a0cbf1;
+}
+
+/* delete-container */
+
+.delete-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* delete box */
+
+.delete-box {
+  width: 350px;
+  height: 200px;
+  background: #242426;
+  border: 2px solid #3a3a40;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.delete-box h2 {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.delete-box p {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttons .delete-btn,
+.buttons .cancel-btn {
+  padding: 8px 30px;
+  border-radius: 8px;
+  border: 0;
+  color: #ffffff;
+}
+
+.buttons .delete-btn {
+  background: #b11100;
+}
+
+.buttons .cancel-btn {
+  background: #313133;
 }
