@@ -2,7 +2,7 @@
 import './App.css';
 
 // react
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // icons
 import { FaRegCircle, FaCheckCircle, FaTrash, FaPlus } from 'react-icons/fa';
@@ -60,16 +60,26 @@ function Task() {
   // Load tasks from local storage on component mount
   useEffect(() => {
     const savedTasks = localStorage.getItem("todo-tasks");
-    console.log("Saved tasks in localStorage:", savedTasks);
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
+
+    try {
+      const parsed = JSON.parse(savedTasks);
+      if (Array.isArray(parsed)) {
+        setTasks(parsed);
+      }
+    } catch (error) {
+      console.error("Error parsing saved tasks:", error);
     }
   }, []);
 
   // Save tasks to local storage whenever tasks change
+  const isInitialMount = useRef(true);
+
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     localStorage.setItem("todo-tasks", JSON.stringify(tasks));
-    console.log("Saved to localStorage:", tasks);
   }, [tasks]);
 
   // if enter pressed add task
@@ -105,6 +115,7 @@ function Task() {
   return (
     <>
       <div className='tasks'>
+        {tasks.length > 0 && <h2>Today's tasks:</h2>}
         <div className='task-container'>
           {tasks.map((task, index) => (
             <TaskElements
@@ -115,6 +126,14 @@ function Task() {
               onDelete={() => handleDeleteClick(index)}
             />
           ))}
+
+          {tasks.length === 0 && (
+            <div className='todo-intro-box'>
+              <h2>Focus on your day</h2>
+              <p>Make your day more productive by creating a task list.</p>
+            </div>
+          )}
+
         </div>
 
         <div className='task-input-box'>
