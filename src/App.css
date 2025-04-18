@@ -42,7 +42,15 @@
 
 .tasks {
   width: 100%;
-  padding: 0 40px;
+  min-height: 85vh;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tasks h2 {
+  color: #a0cbf1;
 }
 
 /* task container */
@@ -52,6 +60,25 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-height: 70vh;
+}
+
+/* task intro box */
+
+.todo-intro-box {
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-intro-box h2,
+.todo-intro-box p {
+  color: #a0cbf1;
+  text-align: center;
 }
 
 /* task item */
@@ -104,14 +131,14 @@
   background: #292929;
   border-radius: 5px;
   padding: 12px 15px;
-  position: absolute;
   bottom: 20px;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
   color: #a0cbf1;
+  margin-bottom: 20px;
 }
 
 .task-input-box input {
@@ -179,12 +206,21 @@
   border-radius: 8px;
   border: 0;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .buttons .delete-btn {
   background: #b11100;
 }
 
+.buttons .delete-btn:hover {
+  background: #dc1903;
+}
+
 .buttons .cancel-btn {
   background: #313133;
+}
+
+.buttons .cancel-btn:hover {
+  background: #3d3d3f;
 }
