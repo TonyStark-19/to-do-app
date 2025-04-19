@@ -56,6 +56,7 @@ function Task() {
   const [newTask, setNewTask] = useState('');
   const [showDelete, setShowDelete] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   // Load tasks from local storage on component mount
   useEffect(() => {
@@ -90,18 +91,40 @@ function Task() {
     }
   };
 
+  // for preloading ding sound
+  const completionSoundRef = useRef(null);
+
+  useEffect(() => {
+    completionSoundRef.current = new Audio('/sounds/ding.mp3');
+    completionSoundRef.current.load(); // Preload the sound
+  }, []);
+
   // task icon for completion
   const toggleTask = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = !updatedTasks[index].completed;
     setTasks(updatedTasks);
+
+    // Play sound if task is completed
+    if (updatedTasks[index].completed && completionSoundRef.current) {
+      completionSoundRef.current.currentTime = 0; // rewind to start
+      completionSoundRef.current.play();
+    }
   };
 
-  // delele function
+  // delete function
   const handleDeleteClick = (index) => {
     setTaskToDelete(index);
     setShowDelete(true);
   };
+
+  // for preloading pop sound
+  const deleteSoundRef = useRef(null);
+
+  useEffect(() => {
+    deleteSoundRef.current = new Audio('/sounds/pop.mp3');
+    deleteSoundRef.current.load(); // Preload pop sound
+  }, []);
 
   // confirm deletion
   const confirmDelete = () => {
@@ -110,12 +133,18 @@ function Task() {
     setTasks(updatedTasks);
     setShowDelete(false);
     setTaskToDelete(null);
+
+    // Play delete sound
+    if (deleteSoundRef.current) {
+      deleteSoundRef.current.currentTime = 0;
+      deleteSoundRef.current.play();
+    }
   };
 
   return (
     <>
       <div className='tasks'>
-        {tasks.length > 0 && <h2>Today's tasks:</h2>}
+
         <div className='task-container'>
           {tasks.map((task, index) => (
             <TaskElements
@@ -136,16 +165,27 @@ function Task() {
 
         </div>
 
-        <div className='task-input-box'>
-          <FaPlus className="add-icon" />
-          <input
-            type='text'
-            placeholder='Add Task'
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            onKeyDown={handleAddTask}
-          />
+        <div className='input-box-wrap'>
+
+          <div className='task-input-box'>
+            {isInputFocused ? (
+              <FaRegCircle className="add-icon focused-icon" />
+            ) : (
+              <FaPlus className="add-icon" />
+            )}
+            <input
+              type='text'
+              placeholder={isInputFocused ? 'Start typing your task...' : 'Add Task'}
+              value={newTask}
+              onFocus={() => setIsInputFocused(true)}
+              onBlur={() => setIsInputFocused(false)}
+              onChange={(e) => setNewTask(e.target.value)}
+              onKeyDown={handleAddTask}
+            />
+          </div>
+
         </div>
+
       </div>
 
       {showDelete && (
