@@ -24,6 +24,14 @@
   justify-content: space-between;
   align-items: center;
   color: #a0cbf1;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(28, 28, 28, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+.date {
+  cursor: default;
 }
 
 .icon-wrap {
@@ -43,14 +51,11 @@
 .tasks {
   width: 100%;
   min-height: 85vh;
-  padding: 0 50px;
+  padding: 100px 50px 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.tasks h2 {
-  color: #a0cbf1;
+  background: #1c1c1c;
 }
 
 /* task container */
@@ -73,6 +78,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: default;
 }
 
 .todo-intro-box h2,
@@ -125,27 +131,48 @@
   color: #a0cbf1;
 }
 
+/* input-box-wrap */
+
+.input-box-wrap {
+  height: auto;
+  padding: 10px 0 30px;
+  position: fixed;
+  bottom: 0;
+  left: 30px;
+  right: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #1c1c1c;
+}
+
 /* input box */
 
 .task-input-box {
   background: #292929;
   border-radius: 5px;
   padding: 12px 15px;
-  bottom: 20px;
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
   color: #a0cbf1;
-  margin-bottom: 20px;
+  flex: 1;
+}
+
+.task-input-box:hover {
+  background: #363636;
+}
+
+.task-input-box .focused-icon {
+  font-size: 20px;
 }
 
 .task-input-box input {
   outline: none;
   border: none;
   background: transparent;
-  width: 100%;
+  flex: 1;
   color: #fff;
   font-size: 16px;
 }
