@@ -10,27 +10,32 @@ import { SlOptions } from "react-icons/sl";
 
 // main page
 export default function TodoApp() {
+  const [showOptions, setShowOptions] = useState(false);
+
   return (
     <div className='container'>
-      <Navbar />
-      <Task />
+      <Navbar toggleOptions={() => setShowOptions(!showOptions)} />
+      <Task showOptions={showOptions} setShowOptions={setShowOptions} />
     </div>
   );
 }
 
 // navbar
-function Navbar() {
+function Navbar({ toggleOptions }) {
   return (
     <div className='navbar'>
+
       <div className='date'>
         <h2>My Day</h2>
         <p>{GetDate()}</p>
       </div>
+
       <div className='options'>
-        <div className='icon-wrap'>
+        <div className='icon-wrap' onClick={toggleOptions}>
           <SlOptions className='options-icon' />
         </div>
       </div>
+
     </div>
   );
 }
@@ -51,7 +56,7 @@ function GetDate() {
 }
 
 // tasks
-function Task() {
+function Task({ showOptions, setShowOptions }) {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [showDelete, setShowDelete] = useState(false);
@@ -91,39 +96,38 @@ function Task() {
     }
   };
 
-  // for preloading ding sound
+  // preload ding sound
   const completionSoundRef = useRef(null);
 
   useEffect(() => {
     completionSoundRef.current = new Audio('/sounds/ding.mp3');
-    completionSoundRef.current.load(); // Preload the sound
+    completionSoundRef.current.load();
   }, []);
 
-  // task icon for completion
+  // task icon toggle
   const toggleTask = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = !updatedTasks[index].completed;
     setTasks(updatedTasks);
 
-    // Play sound if task is completed
     if (updatedTasks[index].completed && completionSoundRef.current) {
-      completionSoundRef.current.currentTime = 0; // rewind to start
+      completionSoundRef.current.currentTime = 0;
       completionSoundRef.current.play();
     }
   };
 
-  // delete function
+  // delete click
   const handleDeleteClick = (index) => {
     setTaskToDelete(index);
     setShowDelete(true);
   };
 
-  // for preloading pop sound
+  // preload pop sound
   const deleteSoundRef = useRef(null);
 
   useEffect(() => {
     deleteSoundRef.current = new Audio('/sounds/pop.mp3');
-    deleteSoundRef.current.load(); // Preload pop sound
+    deleteSoundRef.current.load();
   }, []);
 
   // confirm deletion
@@ -134,18 +138,22 @@ function Task() {
     setShowDelete(false);
     setTaskToDelete(null);
 
-    // Play delete sound
     if (deleteSoundRef.current) {
       deleteSoundRef.current.currentTime = 0;
       deleteSoundRef.current.play();
     }
   };
 
+  // tasks list informarion
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(task => task.completed).length;
+  const pendingTasks = totalTasks - completedTasks;
+
   return (
     <>
       <div className='tasks'>
-
         <div className='task-container'>
+
           {tasks.map((task, index) => (
             <TaskElements
               key={index}
@@ -207,6 +215,37 @@ function Task() {
 
         </div>
       )}
+
+      {showOptions && (
+        <div className='option-box'>
+
+          <div className='theme'>
+            <p>Light theme</p>
+            <input className='theme-toggle-btn' type='checkbox' />
+          </div>
+
+          <div className='task-info-box'>
+            <h3>List information:</h3>
+
+            <div className='box1'>
+              <p>Total number of tasks:</p>
+              <p>{totalTasks} {totalTasks === 1 ? 'task' : 'tasks'} added</p>
+            </div>
+
+            <div className='box2'>
+              <p>Tasks completed:</p>
+              <p>{completedTasks} of {totalTasks} completed</p>
+            </div>
+
+            <div className='box3'>
+              <p>Tasks pending:</p>
+              <p>{pendingTasks} of {totalTasks} pending</p>
+            </div>
+
+          </div>
+
+        </div>
+      )}
     </>
   );
 }
@@ -215,6 +254,7 @@ function Task() {
 function TaskElements({ text, completed, onToggle, onDelete }) {
   return (
     <div className='task-item'>
+
       <div className='task-text-wrap' onClick={onToggle}>
         {completed ? (
           <FaCheckCircle className='task-icon completed-icon' />
@@ -225,7 +265,9 @@ function TaskElements({ text, completed, onToggle, onDelete }) {
           {text}
         </span>
       </div>
+
       <FaTrash className='delete-icon' onClick={onDelete} />
+
     </div>
   );
 }
