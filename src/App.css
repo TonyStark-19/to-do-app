@@ -65,8 +65,8 @@
 
 .option-box {
   position: absolute;
-  right: 0;
-  top: 80px;
+  right: 5px;
+  top: 90px;
   width: 300px;
   background-color: #212121;
   padding: 20px;
@@ -74,71 +74,18 @@
   border: 2px solid #363636;
 }
 
-/* theme */
-
-.theme {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  user-select: none;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #363636;
-}
-
-.theme p {
-  color: #e1dede;
-}
-
-/* theme toggle button */
-
-.theme input[type="checkbox"] {
-  position: relative;
-  height: 19px;
-  width: 36px;
-  background: #aeaeae;
-  outline: none;
-  cursor: pointer;
-  border-radius: 20px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  appearance: none;
-  transition: 0.5s;
-}
-
-.theme input[type="checkbox"]::before {
-  content: '';
-  position: absolute;
-  height: 19px;
-  width: 19px;
-  border-radius: 20px;
-  top: 0;
-  left: 0;
-  transform: scale(0.85);
-  background: linear-gradient(#fff, #f2f2f2, #e6e6e6, #d9d9d9);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: 0.5s;
-}
-
-.theme input:checked[type="checkbox"] {
-  background: #2a2a2a;
-}
-
-.theme input:checked[type="checkbox"]::before {
-  left: 18px;
-}
-
 /* task-info-box */
 
 .task-info-box {
   display: flex;
   flex-direction: column;
-  padding: 10px 0 0;
   gap: 10px;
 }
 
 .task-info-box h3 {
-  color: #e1dede;
+  color: #a0cbf1;
+  border-bottom: 1px solid #363636;
+  padding-bottom: 10px;
 }
 
 .task-info-box .box1,
@@ -147,6 +94,8 @@
   color: #e1dede;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #363636;
+  padding-bottom: 10px;
 }
 
 /* task container */
@@ -261,8 +210,18 @@
   background: #363636;
 }
 
-.task-input-box .focused-icon {
-  font-size: 20px;
+.task-input-box .add-icon {
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.task-input-box .add-icon:hover {
+  color: #4CAF50;
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
 }
 
 .task-input-box input {
@@ -350,4 +309,101 @@
 
 .buttons .cancel-btn:hover {
   background: #3d3d3f;
+}
+
+/* responsiveness */
+
+@media (max-width: 900px) {
+
+  /* navbar */
+
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  /* tasks */
+
+  .tasks {
+    padding: 100px 30px 50px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  /* navbar */
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .date h2 {
+    font-size: 22px;
+  }
+
+  .date p {
+    font-size: 15px;
+  }
+
+  /* tasks */
+
+  .tasks {
+    padding: 100px 10px 50px;
+  }
+
+  /* delete box */
+
+  .delete-box {
+    width: 300px;
+  }
+
+  .delete-box h2 {
+    font-size: 22px;
+  }
+
+  /* input-box-wrap */
+
+  .input-box-wrap {
+    padding: 10px 0 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  /* input box */
+
+  .task-input-box input {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+
+  /* task intro box */
+
+  .todo-intro-box h2 {
+    font-size: 22px;
+  }
+
+  .todo-intro-box p {
+    font-size: 15px;
+  }
+
+  /* tasks */
+
+  .tasks {
+    padding: 100px 5px 50px;
+  }
+
+  /* delete box */
+
+  .delete-box {
+    width: 270px;
+  }
+
+  /* input-box-wrap */
+
+  .input-box-wrap {
+    padding: 10px 0 20px;
+    left: 10px;
+    right: 10px;
+  }
 }

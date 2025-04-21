@@ -5,7 +5,8 @@ import './App.css';
 import { useState, useEffect, useRef } from 'react';
 
 // icons
-import { FaRegCircle, FaCheckCircle, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaRegCircle, FaCheckCircle, FaTrash } from 'react-icons/fa';
+import { FiPlusCircle } from "react-icons/fi";
 import { SlOptions } from "react-icons/sl";
 
 // main page
@@ -96,6 +97,14 @@ function Task({ showOptions, setShowOptions }) {
     }
   };
 
+  // to haddle ask addition for smaller screens
+  const handleAddTaskClick = () => {
+    if (newTask.trim() !== '') {
+      setTasks([...tasks, { text: newTask.trim(), completed: false }]);
+      setNewTask('');
+    }
+  };
+
   // preload ding sound
   const completionSoundRef = useRef(null);
 
@@ -176,11 +185,9 @@ function Task({ showOptions, setShowOptions }) {
         <div className='input-box-wrap'>
 
           <div className='task-input-box'>
-            {isInputFocused ? (
-              <FaRegCircle className="add-icon focused-icon" />
-            ) : (
-              <FaPlus className="add-icon" />
-            )}
+
+            <FiPlusCircle className="add-icon" onClick={handleAddTaskClick} />
+
             <input
               type='text'
               placeholder={isInputFocused ? 'Start typing your task...' : 'Add Task'}
@@ -219,12 +226,8 @@ function Task({ showOptions, setShowOptions }) {
       {showOptions && (
         <div className='option-box'>
 
-          <div className='theme'>
-            <p>Light theme</p>
-            <input className='theme-toggle-btn' type='checkbox' />
-          </div>
-
           <div className='task-info-box'>
+
             <h3>List information:</h3>
 
             <div className='box1'>
