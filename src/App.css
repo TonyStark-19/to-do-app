@@ -23,16 +23,19 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: #a0cbf1;
   position: fixed;
   width: 100%;
   background-color: rgba(28, 28, 28, 0.9);
   backdrop-filter: blur(6px);
 }
 
+/* date */
+
 .date {
   cursor: default;
 }
+
+/* option icon */
 
 .icon-wrap {
   padding: 8px;
@@ -74,6 +77,37 @@
   border: 2px solid #363636;
 }
 
+/* theme box */
+
+.theme-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-box h3 {
+  color: #e1dede;
+  font-size: 16px;
+}
+
+/* theme box wrap */
+
+.theme-box-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 10px 0 20px;
+  border-bottom: 1px solid #363636;
+}
+
+/* theme */
+
+.theme {
+  width: 47px;
+  height: 47px;
+  cursor: pointer;
+}
+
 /* task-info-box */
 
 .task-info-box {
@@ -83,9 +117,10 @@
 }
 
 .task-info-box h3 {
-  color: #a0cbf1;
+  color: #e1dede;
+  padding: 10px 0;
   border-bottom: 1px solid #363636;
-  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .task-info-box .box1,
@@ -123,7 +158,6 @@
 
 .todo-intro-box h2,
 .todo-intro-box p {
-  color: #a0cbf1;
   text-align: center;
 }
 
@@ -145,6 +179,8 @@
 .task-item:hover {
   background: #363636;
 }
+
+/* task text wrap */
 
 .task-text-wrap {
   display: flex;
@@ -171,7 +207,6 @@
 }
 
 .completed-icon {
-  color: #a0cbf1;
   user-select: none;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -202,7 +237,6 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  color: #a0cbf1;
   flex: 1;
 }
 
@@ -233,8 +267,8 @@
   font-size: 16px;
 }
 
-.task-input-box input::placeholder {
-  color: #a0cbf1;
+input::placeholder {
+  color: var(--placeholder-color);
 }
 
 /* delete-container */
