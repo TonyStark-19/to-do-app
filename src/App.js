@@ -12,28 +12,30 @@ import { SlOptions } from "react-icons/sl";
 // main page
 export default function TodoApp() {
   const [showOptions, setShowOptions] = useState(false);
+  const [themeColor, setThemeColor] = useState('#a0cbf1'); // default theme color
 
   return (
-    <div className='container'>
+    <div className='container' style={{ color: themeColor }}>
       <Navbar toggleOptions={() => setShowOptions(!showOptions)} />
-      <Task showOptions={showOptions} setShowOptions={setShowOptions} />
+      <Task showOptions={showOptions} setShowOptions={setShowOptions}
+        themeColor={themeColor} setThemeColor={setThemeColor} />
     </div>
   );
 }
 
 // navbar
-function Navbar({ toggleOptions }) {
+function Navbar({ toggleOptions, themeColor }) {
   return (
     <div className='navbar'>
 
-      <div className='date'>
+      <div className='date' style={{ color: themeColor }}>
         <h2>My Day</h2>
         <p>{GetDate()}</p>
       </div>
 
       <div className='options'>
         <div className='icon-wrap' onClick={toggleOptions}>
-          <SlOptions className='options-icon' />
+          <SlOptions className='options-icon' style={{ color: themeColor }} />
         </div>
       </div>
 
@@ -57,7 +59,7 @@ function GetDate() {
 }
 
 // tasks
-function Task({ showOptions, setShowOptions }) {
+function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [showDelete, setShowDelete] = useState(false);
@@ -170,11 +172,12 @@ function Task({ showOptions, setShowOptions }) {
               completed={task.completed}
               onToggle={() => toggleTask(index)}
               onDelete={() => handleDeleteClick(index)}
+              themeColor={themeColor}
             />
           ))}
 
           {tasks.length === 0 && (
-            <div className='todo-intro-box'>
+            <div className='todo-intro-box' style={{ color: themeColor }}>
               <h2>Focus on your day</h2>
               <p>Make your day more productive by creating a task list.</p>
             </div>
@@ -186,9 +189,10 @@ function Task({ showOptions, setShowOptions }) {
 
           <div className='task-input-box'>
 
-            <FiPlusCircle className="add-icon" onClick={handleAddTaskClick} />
+            <FiPlusCircle className="add-icon" style={{ color: themeColor }} onClick={handleAddTaskClick} />
 
             <input
+              style={{ '--placeholder-color': themeColor }}
               type='text'
               placeholder={isInputFocused ? 'Start typing your task...' : 'Add Task'}
               value={newTask}
@@ -226,6 +230,24 @@ function Task({ showOptions, setShowOptions }) {
       {showOptions && (
         <div className='option-box'>
 
+          <div className='theme-box'>
+
+            <h3>Theme</h3>
+
+            <div className='theme-box-wrap'>
+              {['#788cde', '#bc7abc', '#e46c8c', '#e46b67', '#4aa079',
+                '#479e98', '#8795a0', '#a0cbf1', '#ecbda2', '#9ad2ba'].map((color, idx) => (
+                  <div
+                    key={idx}
+                    className='theme'
+                    style={{ backgroundColor: color }}
+                    onClick={() => setThemeColor(color)}
+                  />
+                ))}
+            </div>
+
+          </div>
+
           <div className='task-info-box'>
 
             <h3>List information:</h3>
@@ -254,13 +276,13 @@ function Task({ showOptions, setShowOptions }) {
 }
 
 // task elements
-function TaskElements({ text, completed, onToggle, onDelete }) {
+function TaskElements({ text, completed, onToggle, onDelete, themeColor }) {
   return (
     <div className='task-item'>
 
       <div className='task-text-wrap' onClick={onToggle}>
         {completed ? (
-          <FaCheckCircle className='task-icon completed-icon' />
+          <FaCheckCircle className='task-icon completed-icon' style={{ color: themeColor }} />
         ) : (
           <FaRegCircle className='task-icon' />
         )}
@@ -271,6 +293,6 @@ function TaskElements({ text, completed, onToggle, onDelete }) {
 
       <FaTrash className='delete-icon' onClick={onDelete} />
 
-    </div>
+    </div >
   );
 }
