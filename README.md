@@ -23,6 +23,7 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 - ➕ Add tasks using input box or plus icon
 - ❌ Delete tasks with confirmation prompt
 - 🔊 Sound feedback for task completion and deletion
+- 🎨 Custom theme color selection (updates text colors dynamically)
 - 📊 Task statistics (Total, Completed, Pending)
 - 📱 Fully responsive for mobile and desktop screens
 - 💾 Persists data using LocalStorage
@@ -36,6 +37,7 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 - **CSS3**
 - **LocalStorage API**
 - **HTML5**
+- **JavaScript DOM Styling for Theme Color**
 
 ---
 
