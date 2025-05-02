@@ -11,7 +11,7 @@ import { SlOptions } from "react-icons/sl";
 
 // main page
 export default function TodoApp() {
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState(false); // state for options div
   const [themeColor, setThemeColor] = useState('#a0cbf1'); // default theme color
 
   return (
@@ -47,7 +47,9 @@ function Navbar({ toggleOptions, themeColor }) {
 function GetDate() {
   const today = new Date();
 
+  // weekdays
   const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  // months
   const allMonths = ["January", "February", "March", "April", "May", "June", "July", "August",
     "September", "October", "November", "December"];
 
@@ -55,16 +57,18 @@ function GetDate() {
   const day = today.getDate() < 10 ? `0${today.getDate()}` : today.getDate();
   const month = allMonths[today.getMonth()];
 
+  // return date format
   return `${weekday}, ${day} ${month}`;
 }
 
 // tasks
 function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
-  const [showDelete, setShowDelete] = useState(false);
-  const [taskToDelete, setTaskToDelete] = useState(null);
-  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [tasks, setTasks] = useState([]); //state for tasks
+  const [newTask, setNewTask] = useState(''); //state for new tasks
+  const [showDelete, setShowDelete] = useState(false); //state for delete container
+  const [taskToDelete, setTaskToDelete] = useState(null); //state for deleted tasks
+  const [isInputFocused, setIsInputFocused] = useState(false); //state for input focus effect
+  const [feedback, setFeedback] = useState(''); //state for feedback message
 
   // Load tasks from local storage on component mount
   useEffect(() => {
@@ -96,6 +100,7 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
     if (e.key === 'Enter' && newTask.trim() !== '') {
       setTasks([...tasks, { text: newTask.trim(), completed: false }]);
       setNewTask('');
+      setFeedback('Task added ✅');
     }
   };
 
@@ -118,13 +123,18 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
   // task icon toggle
   const toggleTask = (index) => {
     const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed;
+    const taskToUpdate = updatedTasks[index];
+    taskToUpdate.completed = !taskToUpdate.completed;
     setTasks(updatedTasks);
 
-    if (updatedTasks[index].completed && completionSoundRef.current) {
+    // Play sound on completion
+    if (taskToUpdate.completed && completionSoundRef.current) {
       completionSoundRef.current.currentTime = 0;
       completionSoundRef.current.play();
     }
+
+    // Set feedback message
+    setFeedback(taskToUpdate.completed ? 'Task completed 🎉' : 'Task marked incomplete ✏️');
   };
 
   // delete click
@@ -148,12 +158,21 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
     setTasks(updatedTasks);
     setShowDelete(false);
     setTaskToDelete(null);
+    setFeedback('Task deleted 🗑️');
 
     if (deleteSoundRef.current) {
       deleteSoundRef.current.currentTime = 0;
       deleteSoundRef.current.play();
     }
   };
+
+  // for feedback message
+  useEffect(() => {
+    if (feedback) {
+      const timer = setTimeout(() => setFeedback(''), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [feedback]);
 
   // tasks list informarion
   const totalTasks = tasks.length;
@@ -163,6 +182,13 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
   return (
     <>
       <div className='tasks'>
+
+        {feedback && (
+          <div className='feedback-message' style={{ color: themeColor }}>
+            {feedback}
+          </div>
+        )}
+
         <div className='task-container'>
 
           {tasks.map((task, index) => (
@@ -239,7 +265,7 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
                 '#479e98', '#8795a0', '#a0cbf1', '#ecbda2', '#9ad2ba'].map((color, idx) => (
                   <div
                     key={idx}
-                    className='theme'
+                    className={`theme ${themeColor === color ? 'selected' : ''}`}
                     style={{ backgroundColor: color }}
                     onClick={() => setThemeColor(color)}
                   />
