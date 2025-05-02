@@ -64,6 +64,43 @@
   background: #1c1c1c;
 }
 
+/* feedback message */
+
+.feedback-message {
+  animation: fadeOut 3s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* auto-fade the message */
+@keyframes fadeOut {
+
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+
+  80% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 /* option-box */
 
 .option-box {
@@ -105,7 +142,12 @@
 .theme {
   width: 47px;
   height: 47px;
+  border: 3px solid transparent;
   cursor: pointer;
+}
+
+.theme.selected {
+  border: 3px solid #2e2e2e;
 }
 
 /* task-info-box */
