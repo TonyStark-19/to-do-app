@@ -27,6 +27,7 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 - 📊 Task statistics (Total, Completed, Pending)
 - 📱 Fully responsive for mobile and desktop screens
 - 💾 Persists data using LocalStorage
+- 📝 Provides real-time feedback (task completed or marked incomplete, task added or deleted)
 
 ---
 
