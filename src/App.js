@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaRegCircle, FaCheckCircle, FaTrash } from 'react-icons/fa';
 import { FiPlusCircle } from "react-icons/fi";
 import { SlOptions } from "react-icons/sl";
+import { RiCalendarTodoFill } from "react-icons/ri";
 
 // main page
 export default function TodoApp() {
@@ -204,6 +205,7 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
 
           {tasks.length === 0 && (
             <div className='todo-intro-box' style={{ color: themeColor }}>
+              <RiCalendarTodoFill className='todo-intro-box-icon' />
               <h2>Focus on your day</h2>
               <p>Make your day more productive by creating a task list.</p>
             </div>

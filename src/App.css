@@ -188,14 +188,26 @@
 /* task intro box */
 
 .todo-intro-box {
-  width: 300px;
+  width: 320px;
+  min-height: 180px;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: default;
+  border: 2px solid #363636;
+  background: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todo-intro-box-icon {
+  font-size: 35px;
+  margin-bottom: 10px;
 }
 
 .todo-intro-box h2,
@@ -455,6 +467,10 @@ input::placeholder {
 
   /* task intro box */
 
+  .todo-intro-box {
+    width: 300px;
+  }
+
   .todo-intro-box h2 {
     font-size: 22px;
   }
@@ -481,5 +497,14 @@ input::placeholder {
     padding: 10px 0 20px;
     left: 10px;
     right: 10px;
+  }
+}
+
+@media (max-width: 330px) {
+
+  /* todo intro box */
+
+  .todo-intro-box {
+    width: 280px;
   }
 }
