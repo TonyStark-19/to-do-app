@@ -16,10 +16,17 @@ export default function TodoApp() {
   const [themeColor, setThemeColor] = useState('#a0cbf1'); // default theme color
 
   return (
-    <div className='container' style={{ color: themeColor }}>
+    <div
+      className="container"
+      style={{
+        color: themeColor,
+        background: "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 40%), linear-gradient(120deg, #0f0e17 0%, #1a1b26 100%)"
+      }}
+    >
       <Navbar toggleOptions={() => setShowOptions(!showOptions)} />
       <Task showOptions={showOptions} setShowOptions={setShowOptions}
-        themeColor={themeColor} setThemeColor={setThemeColor} />
+        themeColor={themeColor} setThemeColor={setThemeColor}
+        toggleOptions={() => setShowOptions(!showOptions)} />
     </div>
   );
 }
@@ -63,7 +70,7 @@ function GetDate() {
 }
 
 // tasks
-function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
+function Task({ showOptions, toggleOptions, themeColor, setThemeColor }) {
   const [tasks, setTasks] = useState([]); //state for tasks
   const [newTask, setNewTask] = useState(''); //state for new tasks
   const [showDelete, setShowDelete] = useState(false); //state for delete container
@@ -269,7 +276,12 @@ function Task({ showOptions, setShowOptions, themeColor, setThemeColor }) {
                     key={idx}
                     className={`theme ${themeColor === color ? 'selected' : ''}`}
                     style={{ backgroundColor: color }}
-                    onClick={() => setThemeColor(color)}
+                    onClick={() => {
+                      // 1. Set the new theme color
+                      setThemeColor(color);
+                      // 2. Toggle the options div (close the menu)
+                      toggleOptions();
+                    }}
                   />
                 ))}
             </div>

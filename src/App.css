@@ -10,8 +10,8 @@
 /* container */
 
 .container {
-  background: #1c1c1c;
-  height: 100vh;
+  background: transparent;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   position: fixed;
   width: 100%;
-  background-color: rgba(28, 28, 28, 0.9);
+  background-color: transparent;
   backdrop-filter: blur(6px);
 }
 
@@ -49,7 +49,7 @@
 }
 
 .icon-wrap:hover {
-  background: #292929;
+  background: rgba(41, 41, 41, 0.5);
 }
 
 /* tasks */
@@ -61,7 +61,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #1c1c1c;
+  background: transparent;
 }
 
 /* feedback message */
@@ -108,7 +108,7 @@
   right: 5px;
   top: 90px;
   width: 300px;
-  background-color: #212121;
+  background-color: #1c1b2a;
   padding: 20px;
   border-radius: 5px;
   border: 2px solid #363636;
@@ -198,7 +198,7 @@
   transform: translate(-50%, -50%);
   cursor: default;
   border: 2px solid #363636;
-  background: #212121;
+  background: rgba(33, 33, 33, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -218,7 +218,7 @@
 /* task item */
 
 .task-item {
-  background: #292929;
+  background: rgba(41, 41, 41, 0.5);
   border-radius: 5px;
   padding: 12px 20px;
   display: flex;
@@ -231,7 +231,7 @@
 }
 
 .task-item:hover {
-  background: #363636;
+  background: rgba(54, 54, 54, 0.5);
 }
 
 /* task text wrap */
@@ -278,15 +278,16 @@
   flex: 1;
   display: flex;
   align-items: center;
-  background-color: #1c1c1c;
+  background-color: transparent;
+  backdrop-filter: blur(6px);
 }
 
 /* input box */
 
 .task-input-box {
-  background: #292929;
+  background: rgba(41, 41, 41, 0.5);
   border-radius: 5px;
-  padding: 12px 15px;
+  padding: 15px 25px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -295,7 +296,7 @@
 }
 
 .task-input-box:hover {
-  background: #363636;
+  background: rgba(54, 54, 54, 0.5);
 }
 
 .task-input-box .add-icon {
@@ -432,6 +433,12 @@ input::placeholder {
     font-size: 15px;
   }
 
+  /* option box */
+
+  .option-box {
+    width: 98%;
+  }
+
   /* tasks */
 
   .tasks {
@@ -457,6 +464,10 @@ input::placeholder {
   }
 
   /* input box */
+
+  .task-input-box {
+    padding: 15px;
+  }
 
   .task-input-box input {
     font-size: 15px;
