@@ -6,7 +6,13 @@ A fully responsive and minimalistic **Todo App** built using **React**. This app
 
 ## 📸 Screenshot
 
-![Todo App Screenshot](/public/image/image.png)
+![Todo App Screenshot](/public/image/image1.png)
+
+![Todo App Screenshot](/public/image/image2.png)
+
+![Todo App Screenshot](/public/image/image3.png)
+
+![Todo App Screenshot](/public/image/image4.png)
 
 ---
 
