@@ -78,8 +78,8 @@ To use these projects locally, follow these steps:
 
 - **Clone this repository**  
 ```bash  
-git clone https://github.com/TonyStark-19/todo-app.git
-cd todo-app
+git clone https://github.com/TonyStark-19/to-do-app.git
+cd to-do-app
 ```
 
 - **Install dependencies:**
