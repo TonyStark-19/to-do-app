@@ -1,5 +1,17 @@
 # ✅ My Day - Todo App
 
+<!-- Project Stats -->
+![Repo Size](https://img.shields.io/github/repo-size/TonyStark-19/to-do-app?color=yellow)
+![Stars](https://img.shields.io/github/stars/TonyStark-19/to-do-app?color=blue)
+![Forks](https://img.shields.io/github/forks/TonyStark-19/to-do-app?color=blueviolet)
+![Last Commit](https://img.shields.io/github/last-commit/TonyStark-19/to-do-app?color=brightgreen)
+
+<!-- Features -->
+![Responsive](https://img.shields.io/badge/Responsive-Yes-success)
+![Sound Effects](https://img.shields.io/badge/Sound-Effects-blue)
+![Dynamic Theme](https://img.shields.io/badge/Theme%20Color-Dynamic-ff69b4)
+![Data Persistence](https://img.shields.io/badge/Data-Persistent%20(LS)-informational)
+
 A fully responsive and minimalistic **Todo App** built using **React**. This app allows users to manage daily tasks with a clean UI and intuitive interactions. Sound effects are included for a more engaging experience when completing or deleting tasks.
 
 ---
@@ -38,6 +50,14 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 ---
 
 ## 🛠️ Technologies Used
+
+<!-- Tech Stack -->
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![LocalStorage](https://img.shields.io/badge/LocalStorage-Enabled-green)
+![React Icons](https://img.shields.io/badge/React%20Icons-Icon%20Library-orange)
 
 - **React JS** (with hooks)
 - **React Icons**
