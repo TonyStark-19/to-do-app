@@ -1,4 +1,4 @@
-# ✅ My Day - Todo App
+# ⚡ My Day - Modern React Todo App
 
 <!-- Project Stats -->
 ![Repo Size](https://img.shields.io/github/repo-size/TonyStark-19/to-do-app?color=yellow)
@@ -12,18 +12,18 @@
 ![Dynamic Theme](https://img.shields.io/badge/Theme%20Color-Dynamic-ff69b4)
 ![Data Persistence](https://img.shields.io/badge/Data-Persistent%20(LS)-informational)
 
-A fully responsive and minimalistic **Todo App** built using **React**. This app allows users to manage daily tasks with a clean UI and intuitive interactions. Sound effects are included for a more engaging experience when completing or deleting tasks.
+A sleek, minimalistic, and feature-rich **Todo App** built with **React** and styled using custom glassmorphism CSS. Designed to help users stay focused and organize their daily task flow with satisfying sound feedback, inline task editing, view filtering, and dynamic themes.
 
 ---
 
 ## 📸 Screenshot
 
-| Preview 1 | Preview 2 |
-|------------|------------|
+| Main View & Tasks | Theme Selector & Stats |
+| :---: | :---: |
 | ![Screenshot 1](/public/image/image1.png) | ![Screenshot 2](/public/image/image2.png) |
 
-| Preview 3 | Preview 4 |
-|------------|------------|
+| Task Filtering & Editing | Delete Confirmation Modal |
+| :---: | :---: |
 | ![Screenshot 3](/public/image/image3.png) | ![Screenshot 4](/public/image/image4.png) |
 
 ---
@@ -36,16 +36,17 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 
 ## ✨ Features
 
-- 📅 Displays current date dynamically
-- ✅ Mark tasks as complete/incomplete
-- ➕ Add tasks using input box or plus icon
-- ❌ Delete tasks with confirmation prompt
-- 🔊 Sound feedback for task completion and deletion
-- 🎨 Custom theme color selection (updates text colors dynamically)
-- 📊 Task statistics (Total, Completed, Pending)
-- 📱 Fully responsive for mobile and desktop screens
-- 💾 Persists data using LocalStorage
-- 📝 Provides real-time feedback (task completed or marked incomplete, task added or deleted)
+| Feature | Description |
+| --- | --- |
+| 📅 **Dynamic Date Display** | Displays current day, date, and month dynamically. |
+| 🔍 **Task Filtering** | Instantly filter tasks by **All**, **Active**, and **Completed** states. |
+| ✏️ **Inline Task Editing** | Double-click or click the edit icon to modify existing tasks on the fly. |
+| 🎨 **Dynamic & Persistent Themes** | Pick custom accent colors with automatic `localStorage` persistence. |
+| 🔊 **Audio Feedback** | Audio cues for task completion (`ding.mp3`) and deletion (`pop.mp3`). |
+| 🗑️ **Delete Confirmation & Batch Clear** | Safe modal confirmation for individual items and batch-clearing for completed tasks. |
+| 📊 **Task Analytics & Info Panel** | Real-time breakdown of total, completed, and pending tasks. |
+| 💾 **Full LocalStorage Persistence** | Tasks and active theme choices persist across browser sessions. |
+| 📱 **Responsive Glassmorphism UI** | Mobile-first, dark-themed responsive design crafted with clean CSS. |
 
 ---
 
@@ -59,37 +60,39 @@ The project is live and can be viewed here: [to-do-app](https://todo-phi-ruby.ve
 ![LocalStorage](https://img.shields.io/badge/LocalStorage-Enabled-green)
 ![React Icons](https://img.shields.io/badge/React%20Icons-Icon%20Library-orange)
 
-- **React JS** (with hooks)
-- **React Icons**
-- **CSS3**
-- **LocalStorage API**
-- **HTML5**
-- **JavaScript DOM Styling for Theme Color**
+| Technology / API | Purpose & Usage |
+| --- | --- |
+| **React JS (Hooks)** | Core library for component state management, effects, and dynamic UI rendering |
+| **React Icons** | Icon set for task completion, editing, deletion, theme options, and navigation |
+| **CSS3** | Glassmorphism UI styling, flexbox layouts, animations, and custom scrollbars |
+| **LocalStorage API** | Browser storage for persisting user tasks, completed status, and chosen theme color |
+| **HTML5** | Semantic structure for inputs, buttons, and app containers |
+| **JavaScript (DOM Styling)** | Dynamic inline color application for real-time theme customization |
 
 ---
 
 ## 📂 Project Structure
 
 ```plaintext
+to-do-app/
 ├── public/
-│   └── sounds/
-│       ├── ding.mp3
-│       └── pop.mp3
+│   ├── favicon/        # Favicon assets & app icons
+│   ├── image/          # App screenshots for documentation
+│   ├── sounds/         # Interactive sound effects (ding, pop)
+│   └── index.html
 ├── src/
-│   ├── App.js
-│   ├── App.css
-│   └── index.js
+│   ├── components/     # Modular React components & helpers
+│   │   ├── Navbar.jsx           # Top navigation bar & date header
+│   │   ├── Task.jsx             # Task container, state logic & options modal
+│   │   ├── TaskElements.jsx     # Individual task item with inline editing
+│   │   └── getFormattedDate.js  # Helper utility for date formatting
+│   ├── App.js          # Core application container
+│   ├── App.css         # Glassmorphism & layout styles
+│   ├── index.js        # React DOM entrypoint
+│   └── index.css       # Global resets & typography
 ├── package.json
 └── README.md
 ```
----
-
-## 📌 To Do
-
-- Add theme switching (light/dark mode)
-- Add drag-and-drop task reordering
-- Add categories/tags for tasks
-
 ---
 
 ## 🚀 Getting Started Locally
